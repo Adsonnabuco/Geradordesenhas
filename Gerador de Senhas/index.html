@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de senhas</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<html>
+
+<body>
+    <div class="container">
+        <h1>Gerador de Senhas</h1>
+        <form>
+            <label for="caracteres">Qntd de Caracteres: </label>
+            <input type="number" name="" id="caracteres" min="0" max="32">
+            <br>
+            <input type="checkbox" name="minusculo" id="minusculo">
+            <label for="minusculo">Senha com Letras minúsculas?</label>
+            <br>
+            <input type="checkbox" name="maiusculo" id="maiusculo">
+            <label for="maiusculo">Senha com Letras MAIUSCULAS?</label>
+            <br>
+            <input type="checkbox" name="" id="numero">
+            <label for="numero">Senha com Números?</label>
+            <br>
+            <input type="checkbox" name="" id="simbolo">
+            <label for="simbolo">Senha com Símbolos?</label>
+            <br>
+            <button type="button" onclick="calcular()">GERAR</button>
+            <br>
+            
+            <input class="resultado" id="resultado"></input>
+
+        </form>
+    </div>
+    
+    <script>
+
+        
+        function calcular() {
+
+            let caracteres = document.getElementById("caracteres").value;
+
+            let password = "";
+
+            let possibilidade = "";
+
+            if (document.getElementById('minusculo').checked) {
+                possibilidade += "abcdefghijklmnopqrstuvxyz"
+            }
+
+            if (document.getElementById('maiusculo').checked){
+                possibilidade += "ABCDEFGHIJKLMNOPQRSTUVXYZ"
+            }
+
+            if (document.getElementById('numero').checked){
+                possibilidade += "0123456789"
+            }
+
+            if (document.getElementById('simbolo').checked){
+                possibilidade += "!@#%^&*()_+-=[]{}|;':<>,.? /\\"
+            }
+
+            for (var i = 0; i < caracteres; i++) {
+                password += possibilidade.charAt(Math.floor(Math.random() * possibilidade.length))
+            }
+
+
+            document.getElementById("resultado").value = password
+
+        }
+    </script>
+
+</body>
+
+</html>
